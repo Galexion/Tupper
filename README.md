@@ -1,5 +1,29 @@
-# Tupperware
-A Discord bot written in <a href="https://github.com/abalabahaha/eris">eris</a> for proxying user messages through webhooks, originally created to emulate tulpas/systems users having their own user accounts.
+# Tupper
+A Discord bot Forked from <a href="https://github.com/Keterr/Tupperbox">Tupperbot</a> written in <a href="https://github.com/abalabahaha/eris">eris</a> for proxying user messages through webhooks, originally created to emulate tulpas/systems users having their own user accounts.
+
+
+# Installation
+This bot runs off of Node.js. You can download it from https://nodejs.org/en/download/
+
+Once node is installed, run `npm install` from the bot directory to install the bot's dependencies. If the dependencies all install successfully (note: you may have to run `npm -g install windows-build-tools` first if on Windows) then you can now run the bot by running `node bot`.
+
+Additionally, the bot now requires PostgreSQL to run. You can download it from https://www.postgresql.org/download/,
+or you can register for https://elephantsql.com for anyone that cant Port Foward or isnt "Tech Savy".
+
+# Running
+The bot expects a file in the same directory named `.env` with some data to get it started. Format should look like this:
+```
+DISCORD_TOKEN=MTk4NjIyNDgzNDcxOTI1MjQ4.Cl2FMQ.ZnCjm1XVW7vRze4b7Cq4se7kKWs
+DISCORD_OWNERID=99326032288423936
+DISCORD_INVITE=431544605209788416 (note: remove this line if you don't want the bot to have an invite command)
+PGUSER=???
+PGHOST=???
+PGDATABASE=???
+PGPASSWORD=???
+PGPORT=3456
+```
+(don't worry, that token is a fake)
+The PG-prefixed variables should be filled in with the connection info to your PostgreSQL database set up during installation. You need a **database**, a **user** with associated **password** with full write access to that database, and the **host IP** of the machine running the server (localhost if it's the same machine). This Bot can also be runned on https://heroku.com/ .
 
 # Commands
 - tul!avatar  -  View or change a member's avatar
@@ -23,28 +47,3 @@ A Discord bot written in <a href="https://github.com/abalabahaha/eris">eris</a> 
 - tul!showuser  -  Show the user that registered the member that last spoke
 - tul!tag  -  Remove or change a member's or your user tag (displayed next to name when proxying)
 - tul!togglebrackets - Toggle whether the brackets used to proxy also show up in the resulting message for the given member.
-
-# Installation
-This bot runs off of Node.js. You can download it from https://nodejs.org/en/download/
-
-Once node is installed, run `npm install` from the bot directory to install the bot's dependencies. If the dependencies all install successfully (note: you may have to run `npm -g install windows-build-tools` first if on Windows) then you can now run the bot by running `node bot`.
-
-Additionally, the bot now requires PostgreSQL to run. You can download it from https://www.postgresql.org/download/
-
-# Running
-The bot expects a file in the same directory named `.env` with some data to get it started. Format should look like this:
-```
-DISCORD_TOKEN=MTk4NjIyNDgzNDcxOTI1MjQ4.Cl2FMQ.ZnCjm1XVW7vRze4b7Cq4se7kKWs
-DISCORD_OWNERID=99326032288423936
-DISCORD_INVITE=431544605209788416 (note: remove this line if you don't want the bot to have an invite command)
-PGUSER=???
-PGHOST=???
-PGDATABASE=???
-PGPASSWORD=???
-PGPORT=3456
-```
-(don't worry, that token is a fake)
-The PG-prefixed variables should be filled in with the connection info to your PostgreSQL database set up during installation. You need a **database**, a **user** with associated **password** with full write access to that database, and the **host IP** of the machine running the server (localhost if it's the same machine).
-
-# Upgrading from JSON storage
-The new version of the bot runs on PostgreSQL and not JSON. If you would like to upgrade, install PostgreSQL, switch to the rewrite branch, and on startup the bot will prompt you to import your JSON databases to the Postgres server you've configured automatically. (Make a backup of these files first - it will delete them)
